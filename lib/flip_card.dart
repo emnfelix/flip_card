@@ -80,7 +80,7 @@ class FlipCard extends StatefulWidget {
       {Key key,
       @required this.front,
       @required this.back,
-      this.isFront,
+      this.isFront=true,
       this.speed = 500,
       this.onFlip,
       this.onFlipDone,
