@@ -49,6 +49,7 @@ class FlipCard extends StatefulWidget {
   final FlipDirection direction;
   final VoidCallback onFlip;
   final BoolCallback onFlipDone;
+  final bool isFront;
 
   /// When enabled, the card will flip automatically when touched. This behavior
   /// can be disabled if this is not desired. To manually flip a card from your
@@ -79,6 +80,7 @@ class FlipCard extends StatefulWidget {
       {Key key,
       @required this.front,
       @required this.back,
+      this.isFront,
       this.speed = 500,
       this.onFlip,
       this.onFlipDone,
@@ -98,11 +100,14 @@ class FlipCardState extends State<FlipCard>
   Animation<double> _frontRotation;
   Animation<double> _backRotation;
 
-  bool isFront = true;
+  bool isFront;
 
   @override
   void initState() {
     super.initState();
+
+    isFront=widget.isFront;
+
     controller = AnimationController(
         duration: Duration(milliseconds: widget.speed), vsync: this);
     _frontRotation = TweenSequence(
